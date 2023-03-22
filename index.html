@@ -1,16 +1,161 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tamarindos Lote 209</title>
     <style>
       h1 {
         text-align: center;
       }
-    </style>
-    <script>
-    </script>
+      body {
+        background-color: #0066cc;
+       }
+      #wa {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      #wab {
+          border-radius: 10px;
+          background-color:rgb(77,218,42);
+     }       
+      #wabl {
+       height: 27px;
+       width: 27px;
+     }
+    .carousel-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin: 0 auto;
+      width: 70%;
+      justify-content: center
+    }
+
+    .carousel-slide {
+      display: flex;
+      width: 400px;
+      height: 400px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .carousel-slide img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: left 0.5s ease-in-out;
+    }
+
+    .carousel-prev,
+    .carousel-next {
+      position: absolute;
+      top: 50%;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .carousel-prev {
+      left: 0;
+      transform: translateY(-50%);
+    }
+
+    .carousel-next {
+      right: 0;
+      transform: translateY(-50%);
+    }
+
+  @media only screen and (max-width: 500px) {
+  /* CSS rules for mobile devices */
+      
+    .carousel-container {
+      width: 90%;
+   }
+    .carousel-slide {
+      width: 100%;
+      height:500px;
+   }
+
+}      
+        
+  </style>
   </head>
   <body>
-    <h1>Tamaridnos Lote 209</h1>
-  </body>
+    <h1>En Venta</h1>
+    <h1>Tamarindos Lote 209</h1>
+    <!--div id="wa">
+        <button id="wab">
+            <img id="wabl" src="./Digital_Glyph_White.png">
+            Pedir Info por WhatsApp
+        </button>
+    </div-->
+  <div class="carousel-container">
+    <button class="carousel-prev">&#10094;</button>
+      <div class="carousel-slide">
+        <img src="./1.jpeg" alt="Image 1">
+        <img src="./2.jpeg" alt="Image 2">
+        <img src="./3.jpeg" alt="Image 2">
+        <img src="./4.jpeg" alt="Image 2">
+        <img src="./5.jpeg" alt="Image 2">
+        <img src="./6.jpeg" alt="Image 2">
+        <img src="./7.jpeg" alt="Image 2">
+        <img src="./8.jpeg" alt="Image 2">
+      </div>
+      <button class="carousel-next">&#10095;</button>
+  </div>
+
+    <script>
+const slide = document.querySelector(".carousel-slide");
+const prevBtn = document.querySelector(".carousel-prev");
+const nextBtn = document.querySelector(".carousel-next");
+const images = document.querySelectorAll(".carousel-slide img");
+const waButton = document.getElementById("wab");
+    
+// Set the starting index of the first image
+let imageIndex = 0;
+
+// Set the position of each image in the slide
+function setImagePosition() {
+  images.forEach((image, index) => {
+    image.style.left = `${100 * (index - imageIndex)}%`;
+  });
+}
+
+// Move the slide to the next image
+function moveToNextImage() {
+  if (imageIndex >= images.length - 1) return;
+  imageIndex++;
+  setImagePosition();
+}
+
+// Move the slide to the previous image
+function moveToPrevImage() {
+  if (imageIndex <= 0) return;
+  imageIndex--;
+  setImagePosition();
+}
+
+function handleClick() {
+  const isMobileAgent = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  const tel = "";
+  const msg = encodeURIComponent("Hola, me interesa saber más del lote 209 en Campestre Tamarindos");
+  if (isMobileAgent) {
+      window.location.href="whatsapp://send?text=" + msg + "&phone=" + tel;
+     } else {
+         window.open("https://web.whatsapp.com/send?phone=" + tel + "&text=" + msg,'', '_blank')
+    }
+}    
+
+nextBtn.addEventListener("click", moveToNextImage);
+prevBtn.addEventListener("click", moveToPrevImage);
+//waButton.addEventListener("click", handleClick);    
+
+setImagePosition();
+
+        </script>  
+    </body>
 </html>
